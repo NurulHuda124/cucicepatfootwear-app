@@ -128,7 +128,7 @@
                 <a href="/" class="d-flex align-items-center mb-1 link-dark text-decoration-none">
                     <img src="{{ asset('img/logo2.png') }}" width="200" height="100">
                 </a>
-                <p class="text-muted">GOBLIN | 2021</p>
+                <p class="text-muted text-center">SINCE 2023</p>
             </div>
 
             <div class="col"></div>
@@ -168,13 +168,13 @@
                         </a>
                     </li>
                     <li class="nav-item mb-2">
-                        <a href="https://www.instagram.com/goblinoutdoor/" class="nav-link p-0 text-muted">
-                            <i class='bx bxl-instagram bx-xs'></i> @goblinoutdoor
+                        <a href="https://www.instagram.com/cucicepat.footwear/" class="nav-link p-0 text-muted">
+                            <i class='bx bxl-instagram bx-xs'></i> @cucicepat.footwear
                         </a>
                     </li>
                     <li class="nav-item mb-2">
                         <a href="#" class="nav-link p-0 text-muted">
-                            <i class='bx bxs-map bx-xs'></i> Probolinggo
+                            <i class='bx bxs-map bx-xs'></i> Malang
                         </a>
                     </li>
                 </ul>

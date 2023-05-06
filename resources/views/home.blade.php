@@ -6,11 +6,11 @@
             <div class="col-md-12">
                 <div class="container col-xxl-10 px-4 py-5">
                     <div class="row flex-lg-row-reverse align-items-center">
-                        <div class="col-10 col-sm-8 col-lg-6">
+                        <div class="col-10 col-sm-10 col-lg-7">
                             <img src="img/viewauth.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
                                 width="1000" height="1300" loading="lazy">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <h1 class="display-5 fw-bold lh-1 mb-3">Selamat datang di Cuci Cepat Footwear</h1>
                             <h4 class="bold">solusi terbaik untuk menjaga sepatu
                                 Anda tetap bersih dan terawat dengan cepat dan mudah!</h4>

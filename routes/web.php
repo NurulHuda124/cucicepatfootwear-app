@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TransaksiController;
 /*
@@ -20,19 +20,22 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/lokasi', [App\Http\Controllers\LokasiController::class, 'index'])->name('lokasi');
-Route::resource('customer', CustomerController::class)->middleware('auth');
-Route::resource('/kategori', KategoriController::class)->middleware('auth');
-Route::resource('/barang',BarangController::class)->middleware('auth');
-Route::resource('transaksi', TransaksiController::class)->middleware('auth');
-Route::get('barang/show/{id}', [App\Http\Controllers\BarangController::class, 'show']);
-Route::get('barang/edit/{id}', [App\Http\Controllers\BarangController::class, 'edit']);
-Route::post('barang/update/{id}', [App\Http\Controllers\BarangController::class, 'update']);
-Route::get('barang/destroy/{id}', [App\Http\Controllers\BarangController::class, 'destroy']);
-Route::get('customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit']);
-Route::post('customer/update/{id}', [App\Http\Controllers\CustomerController::class, 'update']);
-Route::get('customer/destroy/{id}', [App\Http\Controllers\CustomerController::class, 'destroy']);
-Route::get('transaksi/edit/{id}', [App\Http\Controllers\TransaksiController::class, 'edit']);
-Route::post('transaksi/update/{id}', [App\Http\Controllers\TransaksiController::class, 'update']);
-Route::get('transaksi/destroy/{id}', [App\Http\Controllers\TransaksiController::class, 'destroy']);
-Route::get('transaksi/print', [App\Http\Controllers\TransaksiController::class, 'print']);
+Route::get('/dashboard', [DashboardController::class,'index'])->middleware('admin');
+
+Route::get('/dashboard/profile', [DashboardProfileController::class,'index'])->middleware('auth');
+Route::put('/dashboard/profile/{id}',[DashboardProfileController::class,'updateData'])->middleware('auth');
+Route::put('/dashboard/profile/{id}/updatepassword',[DashboardProfileController::class,'updatePassword'])->middleware('auth');
+
+Route::get('/dashboard/setting', [DashboardSettingController::class,'index'])->middleware('admin');
+Route::put('/dashboard/setting/{id}', [DashboardSettingController::class,'updateData'])->middleware('admin');
+
+Route::resource('/dashboard/packets',PacketController::class)->middleware('auth');
+Route::resource('/dashboard/orders',OrderController::class)->middleware('auth');
+Route::get('/dashboard/invoice/{id}',[OrderController::class,'invoice'])->middleware('auth');
+Route::resource('/dashboard/spendings', SpendingController::class)->middleware('auth');
+Route::resource('/dashboard/assets', AssetController::class)->middleware('auth');
+Route::resource('/dashboard/users', UserController::class)->middleware('admin');
+
+Route::get('/dashboard/reports',[ReportController::class,'index'])->middleware('auth');
+Route::get('/dashboard/reports/{startdate}/{enddate}',[ReportController::class,'print'])->middleware('auth');
+Route::post('/dashboard/reports/processprint/{type}',[ReportController::class,'action'])->middleware('auth');

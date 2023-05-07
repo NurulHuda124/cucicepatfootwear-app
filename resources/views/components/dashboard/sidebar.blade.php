@@ -1,18 +1,31 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    {{-- <a href="/dashboard" class="brand-link">
-      <img src="/storage/{{ $systems->image }}" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">{{ $systems->system_name }}</span>
-    </a> --}}
+    <a href="/dashboard" class="brand-link">
+        <img src="/img/logo2.png" alt="AdminLTE Logo" class="brand-image" style="opacity: 1" sizes="80x90">
+    </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ auth()->user()->pp ? '/storage/' . auth()->user()->pp : '/images/blank-profile.png' }}"
-                    class="img-circle elevation-2" alt="User Image">
-            </div>
+            @guest
+
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}"><button class="btn btn-outline-dark"
+                                type="submit">
+                                {{ __('Register') }}</button></a>
+                    </li>
+                @endif
+
+                @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}"><button class="btn btn-dark" type="submit">
+                                {{ __('Login') }}</button>
+                        </a>
+                    </li>
+                @endif
+            @endguest
             <div class="info">
                 <a href="/dashboard" class="d-block">{{ auth()->user()->name }}</a>
             </div>

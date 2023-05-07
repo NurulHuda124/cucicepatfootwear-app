@@ -17,8 +17,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     {{-- favicon --}}
-    {{-- <link rel="shortcut icon" href="/storage/{{ $systems->image }}" type="image/x-icon">
-    <link rel="icon" href="/storage/{{ $systems->image }}" type="image/x-icon"> --}}
 
     <!-- DataTables -->
     <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">

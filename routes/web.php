@@ -1,10 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AssetController;
+use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\DashboardSettingController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PacketController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SpendingController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

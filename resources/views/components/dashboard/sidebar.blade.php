@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-warning elevation-4">
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
         <img src="/img/logo2.png" alt="AdminLTE Logo" class="brand-image" style="opacity: 1" sizes="80x90">

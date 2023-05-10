@@ -59,11 +59,11 @@ class PacketController extends Controller
      * @param  \App\Models\Packet  $packet
      * @return \Illuminate\Http\Response
      */
-    public function show(Packet $packet)
+    public function show($id)
     {
-        return view('dashboard.packet.single',[
-            'title' => 'Detail Paket',
-            'packet' => $packet
+        $packet = Packet::where('id_', $id)->findOrFail($id);
+        return view('dashboard.packet.show',[
+            'packet'=>$packet
         ]);
     }
 

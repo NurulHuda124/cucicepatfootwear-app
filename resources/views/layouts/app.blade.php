@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>GOBLIN | @yield('title')</title>
+    <title>CUCI CEPAT FOOTWEAR | @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -42,34 +42,24 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto"></ul>
-                    <ul class="navbar-nav me-5">
-                        <a class="nav-link" href="{{ url('rute') }}">
-                            <h5><strong>Rute</strong></h5>
+                    <ul class="navbar-nav mr-auto">
+                        <a class="nav-link @cannot('user') d-none @endcannot" href="{{ url('home') }}">
+                            <h5><strong>Home</strong></h5>
                         </a>
                     </ul>
-                    <ul class="navbar-nav mr-auto"></ul>
-
                     <ul class="navbar-nav mr-auto">
-                        @can('user')
-                            <a class="nav-link" href="{{ url('place') }}">
-                                <h5><strong>Data Tempat</strong></h5>
-                            </a>
-                        @endcan
-                    </ul>
-                    <ul class="navbar-nav mr-auto">
-                        @can('admin')
-                            <a class="nav-link" href="{{ route('places.index') }}">
-                                <h5><strong>Data Tempat</strong></h5>
-                            </a>
-                        @endcan
+                        <a class="nav-link @cannot('user') d-none @endcannot" href="{{ url('') }}">
+                            <h5><strong>Pesan</strong></h5>
+                        </a>
                     </ul>
 
                     <ul class="navbar-nav mr-auto"></ul>
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="{{ url('transaksi') }}">
-                            <h5><strong>Transaksi</strong></h5>
+                        <a class="nav-link @cannot('admin') d-none @endcannot" href="{{ url('') }}">
+                            <h5><strong>Cek Status</strong></h5>
                         </a>
                     </ul>
+
                     <ul class="navbar-nav mr-auto"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -101,10 +91,13 @@
                                 </a>
                                 <div class="dropdown-menu  dropdown-menu-dark dropdown-menu-right"
                                     aria-labelledby="navbarDropdown">
+                                    <a href="dashboard" class="dropdown-item "><i class="bx bx-tachometer bx-xs"> Dashboard
+                                        </i></a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }} <i class='bx bx-power-off bx-xs'></i>
+                                                     document.getElementById('logout-form').submit();"><i
+                                            class='bx bx-power-off bx-xs'>
+                                            {{ __('Logout') }} </i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

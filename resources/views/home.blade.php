@@ -24,4 +24,5 @@
             </div>
         </div>
     </div>
+    <livewire:check-order />
 @endsection

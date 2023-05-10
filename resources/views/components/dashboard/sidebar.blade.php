@@ -8,24 +8,6 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            @guest
-
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}"><button class="btn btn-outline-dark"
-                                type="submit">
-                                {{ __('Register') }}</button></a>
-                    </li>
-                @endif
-
-                @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}"><button class="btn btn-dark" type="submit">
-                                {{ __('Login') }}</button>
-                        </a>
-                    </li>
-                @endif
-            @endguest
             <div class="info">
                 <a href="/dashboard" class="d-block">{{ auth()->user()->name }}</a>
             </div>
@@ -108,20 +90,11 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @cannot('admin') d-none @endcannot">
+                <li class="nav-item">
                     <a href="/dashboard/users" class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Pengguna
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item @cannot('admin') d-none @endcannot ">
-                    <a href="/dashboard/setting"
-                        class="nav-link {{ Request::is('dashboard/setting*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cogs"></i>
-                        <p>
-                            Pengaturan
                         </p>
                     </a>
                 </li>

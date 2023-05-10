@@ -28,6 +28,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware('admin');
+Route::get('/packet', [Packetontroller::class,'show'])->middleware('auth');
 
 Route::get('/dashboard/profile', [DashboardProfileController::class,'index'])->middleware('auth');
 Route::put('/dashboard/profile/{id}',[DashboardProfileController::class,'updateData'])->middleware('auth');

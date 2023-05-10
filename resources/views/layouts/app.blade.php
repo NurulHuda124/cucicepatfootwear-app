@@ -43,19 +43,19 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto"></ul>
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link @cannot('user') d-none @endcannot" href="{{ url('home') }}">
+                        <a class="nav-link" href="{{ url('home') }}">
                             <h5><strong>Home</strong></h5>
                         </a>
                     </ul>
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link @cannot('user') d-none @endcannot" href="{{ url('') }}">
+                        <a class="nav-link" href="/dashboard/orders">
                             <h5><strong>Pesan</strong></h5>
                         </a>
                     </ul>
 
                     <ul class="navbar-nav mr-auto"></ul>
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link @cannot('admin') d-none @endcannot" href="{{ url('') }}">
+                        <a class="nav-link" href="{{ url('') }}">
                             <h5><strong>Cek Status</strong></h5>
                         </a>
                     </ul>

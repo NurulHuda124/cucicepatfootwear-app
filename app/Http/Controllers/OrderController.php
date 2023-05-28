@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bayar;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Packet;
 use Illuminate\Http\Request;
@@ -17,7 +19,8 @@ class OrderController extends Controller
     {
         return view('dashboard.order.index',[
             'title' => 'Order',
-            'orders' => Order::latest()->get()
+            'orders' => Order::latest()->get(),
+            'bayars' => Bayar::latest()->get()
         ]);
     }
 
@@ -30,6 +33,7 @@ class OrderController extends Controller
     {
         return view('dashboard.order.create',[
             'title' => 'Tambah pesanan',
+            'users' => User::latest()->get(),
             'packets' => Packet::latest()->get()
         ]);
     }
@@ -68,11 +72,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Order $order,Bayar $bayar)
     {
         return view('dashboard.order.single',[
             'title' => 'Detail pesanan',
-            'order' => $order
+            'order' => $order,
+            'bayar' => $bayar
         ]);
     }
 

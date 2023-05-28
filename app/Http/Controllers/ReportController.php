@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Asset;
+// use App\Models\Asset;
 use App\Models\Order;
 use App\Models\Spending;
 use Carbon\Carbon;
@@ -27,8 +27,8 @@ class ReportController extends Controller
 
     public function print(Request $request ,$startdate, $enddate){
         $type = $request->query('type');
-        if ($type == 'Assets') {
-            $datas = Asset::where('created_at','>=',$startdate)->where('created_at','<=',$enddate)->latest()->get();
+        if ($type == 'Order') {
+            $datas = Order::where('created_at','>=',$startdate)->where('created_at','<=',$enddate)->latest()->get();
         }else{
             $datas = Order::where('created_at','>=',$startdate)->where('created_at','<=',$enddate)->latest()->get();
         }

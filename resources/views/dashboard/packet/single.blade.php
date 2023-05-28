@@ -3,7 +3,7 @@
     <div>
         <a href="/dashboard/packets" class="btn btn-secondary mb-4"><i class="fa fa-solid fa-arrow-left mr-2"></i> Kembali</a>
 
-        <div class="card card-primary">
+        <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Data detail paket</h3>
             </div>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bayar;
 use Illuminate\Http\Request;
-use App\Models\Customer;
 
-class CustomerController extends Controller
+class BayarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = Customer::all();
-        return view('customer.index', [
-            'customer' => $customer
-        ]);
+        return view('bayar');
     }
 
     /**
@@ -27,7 +24,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.create');
+        return view('bayar',[
+            'title' => 'Pembayaran'
+        ]);
     }
 
     /**
@@ -38,59 +37,62 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        Customer::create($request->all());
-        return redirect('customer')->with('msg', 'Data Berhasil di Simpan');
+        $this->validate($request,[
+            'code_order' => 'required',
+        ]);
+        $file = $request->file('gambar');
+        $bayars = new Bayar;
+        $bayars->code_order = $request->code_order;
+        $bayars->gambar  = $file->getClientOriginalName();
+        $tujuan_upload = 'upload';
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+        $bayars->save();
+
+        return redirect('/home')->with('success','Selamat Anda berhasil melakukan pembayaran');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Bayar  $bayar
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bayar $bayar)
     {
-        //
+        // 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Bayar  $bayar
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bayar $bayar)
     {
-        $customer = Customer::where('id_customer', $id)->findOrFail($id);
-        $customer->delete();
-        return view('customer.edit', [
-            'customer' => $customer
-        ]);
+        // 
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Bayar  $bayar
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        Customer::create($request->all());
-        return redirect('customer')->with('msg', 'Data Berhasil di Edit');
+        // 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Bayar  $bayar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Bayar $bayar)
     {
-        $customer = Customer::where('id_customer', $id)->findOrFail($id);
-        $customer->delete();
-        return redirect('/customer')->with('success-message', 'Data telah dihapus');
+        // 
     }
 }

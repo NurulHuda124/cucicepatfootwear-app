@@ -2,7 +2,7 @@
 @section('content-dashboard')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-6">
                 <!-- general form elements -->
                 <div class="card card-warning">
                     <div class="card-header">
@@ -83,7 +83,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Danger</h3>
                     </div>
-                    <form action="/auth/logout" method="post">
+                    <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button class="btn btn-danger m-3">Logout</button>
                     </form>

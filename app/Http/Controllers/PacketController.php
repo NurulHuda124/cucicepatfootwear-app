@@ -40,15 +40,24 @@ class PacketController extends Controller
      */
     public function store(Request $request)
     {
-        $validasi = $request->validate([
+        $this->validate($request,[
             'name' => 'required',
             'code_packet' => 'required',
             'unit' => 'required',
             'price' => 'required',
             'desc' => 'required'
         ]);
-
-        Packet::create($validasi);
+        $file = $request->file('gambar');
+        $packet = new Packet;
+        $packet->name = $request->name;
+        $packet->code_packet = $request->code_packet;
+        $packet->unit = $request->unit;
+        $packet->price = $request->price;
+        $packet->desc = $request->desc;
+        $packet->gambar  = $file->getClientOriginalName();
+        $tujuan_upload = 'upload';
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+        $packet->save();
 
         return redirect('/dashboard/packets')->with('success','Paket baru berhasil dibuat');
     }
@@ -59,11 +68,11 @@ class PacketController extends Controller
      * @param  \App\Models\Packet  $packet
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Packet $packet)
     {
-        $packet = Packet::where('id_', $id)->findOrFail($id);
-        return view('dashboard.packet.show',[
-            'packet'=>$packet
+        return view('dashboard.packet.single',[
+            'title' => 'Detail Paket',
+            'packet' => $packet
         ]);
     }
 
@@ -88,17 +97,26 @@ class PacketController extends Controller
      * @param  \App\Models\Packet  $packet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Packet $packet)
+    public function update(Request $request, $id)
     {
-        $validasi = $request->validate([
+        $this->validate($request,[
             'name' => 'required',
             'code_packet' => 'required',
             'unit' => 'required',
             'price' => 'required',
             'desc' => 'required'
         ]);
-
-        $packet->update($validasi);
+        $file = $request->file('gambar');
+        $packet = new Packet;
+        $packet->name = $request->name;
+        $packet->code_packet = $request->code_packet;
+        $packet->unit = $request->unit;
+        $packet->price = $request->price;
+        $packet->desc = $request->desc;
+        $packet->gambar  = $file->getClientOriginalName();
+        $tujuan_upload = 'upload';
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+        $packet->save();
 
         return redirect('/dashboard/packets')->with('success','Paket berhasil diperbarui');
     }

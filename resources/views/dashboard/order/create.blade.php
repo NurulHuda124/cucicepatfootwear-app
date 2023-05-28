@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Home')
+@section('title', 'Pesan')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -15,8 +15,12 @@
                             <div class="row">
                                 <div class="form-group col-sm-5">
                                     <label for="packetname">Nama pelanggan</label>
-                                    <input type="text" name="customer_name" class="form-control" id="packetname"
-                                        placeholder="Masukkan nama pelanggan" required>
+                                    {{-- <input type="text" name="customer_name" class="form-control" id="packetname"
+                                        placeholder="Masukkan nama pelanggan" required> --}}
+                                    <select name="customer_name" id="packetname" class="form-control" required>
+                                        <option>{{ Auth::user()->name }}
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-sm-5">
                                     <label for="no_hp">No. HP</label>
@@ -36,9 +40,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-5">
-                                    <label for="weight">Berat</label>
+                                    <label for="weight">Jumlah</label>
                                     <input type="number" name="weight" class="form-control" id="weight"
-                                        placeholder="Masukkan berat barang" required>
+                                        placeholder="Masukkan jumlah barang" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -57,21 +61,15 @@
                                 <div>
                                     <label for="">Status</label>
                                     <div class="form-group d-flex">
-                                        <div class="form-check mr-3">
-                                            <input class="form-check-input" type="radio" name="status" value="Done"
-                                                id="Done">
-                                            <label for="Done" class="form-check-label">Done</label>
-                                        </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="status" value="Pending"
-                                                id="Pending" checked>
-                                            <label for="Pending" class="form-check-label">Pending</label>
+                                            <input class="form-check-input" type="radio" name="status"
+                                                value="Belum Bayar" id="Belum Bayar" checked>
+                                            <label for="Belum Bayar" class="form-check-label">Belum Bayar</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="card-footer">
                             <button type="submit" class="btn btn-warning">Simpan</button>
                             <a href="/dashboard/orders" class="btn btn-secondary ml-3">Batal</a>

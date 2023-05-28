@@ -42,25 +42,36 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto"></ul>
-                    <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="{{ url('home') }}">
-                            <h5><strong>Home</strong></h5>
-                        </a>
-                    </ul>
-                    <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="/dashboard/orders">
-                            <h5><strong>Pesan</strong></h5>
-                        </a>
+                    <ul class="nav nav-pills nav-fill">
+                        @auth
+                            @if (auth()->user()->role === 'user')
+                                <ul class="navbar-nav mr-auto">
+                                    <a class="nav-link" href="{{ url('home') }}">
+                                        <h5>Home</h5>
+                                    </a>
+                                </ul>
+                                <ul class="navbar-nav mr-auto">
+                                    <ul class="navbar-nav mr-auto">
+                                        <a class="nav-link" href="dashboard/orders/create">
+                                            <h5>Pesan</h5>
+                                        </a>
+                                    </ul>
+                                </ul>
+                                <ul class="navbar-nav mr-auto">
+                                    <a class="nav-link" href="/check">
+                                        <h5>Cek Status</h5>
+                                    </a>
+                                </ul>
+                                <ul class="navbar-nav mr-auto">
+                                    <a class="nav-link" href="/kategori">
+                                        <h5>Kategori</h5>
+                                    </a>
+                                </ul>
+                            @endif
+                        @endauth
                     </ul>
 
-                    <ul class="navbar-nav mr-auto"></ul>
-                    <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="{{ url('') }}">
-                            <h5><strong>Cek Status</strong></h5>
-                        </a>
-                    </ul>
 
-                    <ul class="navbar-nav mr-auto"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -68,8 +79,8 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}"><button class="btn btn-outline-dark"
-                                            type="submit">
+                                    <a class="nav-link" href="{{ route('register') }}"><button
+                                            class="btn btn-outline-warning" type="submit">
                                             {{ __('Register') }}</button></a>
                                 </li>
                             @endif
@@ -91,8 +102,13 @@
                                 </a>
                                 <div class="dropdown-menu  dropdown-menu-dark dropdown-menu-right"
                                     aria-labelledby="navbarDropdown">
-                                    <a href="dashboard" class="dropdown-item "><i class="bx bx-tachometer bx-xs"> Dashboard
-                                        </i></a>
+                                    @auth
+                                        @if (auth()->user()->role === 'admin')
+                                            <a href="dashboard" class="dropdown-item "><i class="bx bx-tachometer bx-xs">
+                                                    Dashboard
+                                                </i></a>
+                                        @endif
+                                    @endauth
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i
@@ -114,67 +130,71 @@
         <main class="py-5">
             @yield('content')
         </main>
-
-        <footer class="row row-cols-7 py-5 my-2 border-top bg-dark">
-            <div class="col"></div>
-            <div class="col">
-                <a href="/" class="d-flex align-items-center mb-1 link-dark text-decoration-none">
-                    <img src="{{ asset('img/logo2.png') }}" width="200" height="100">
-                </a>
-                <p class="text-muted text-center">SINCE 2023</p>
-            </div>
-
-            <div class="col"></div>
-
-            <div class="col">
-                <h4 class="text-white">Ikuti Kami</h4>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="https://web.facebook.com/goblinoutdoor/"
-                            class="nav-link p-0 text-muted">
-                            <i class='bx bxl-facebook-circle bx-xs'></i> Facebook</a></li>
-                    <li class="nav-item mb-2"><a href="https://www.instagram.com/goblinoutdoor/"
-                            class="nav-link p-0 text-muted">
-                            <i class='bx bxl-instagram bx-xs'></i> Instagram</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">
-                            <i class='bx bxl-twitter bx-xs'></i> Twitter</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col">
-                <h4 class="text-white">Bantuan</h4>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Syarat &
-                            Ketentuan</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Kebijakan Privasi</a>
-                    </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Status</a></li>
-                </ul>
-            </div>
-
-            <div class="col">
-                <h4 class="text-white">Contact</h4>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0 text-muted">
-                            <i class='bx bxl-whatsapp bx-xs'></i> 0812-4982-541
+        @auth
+            @if (auth()->user()->role === 'user')
+                <footer class="row row-cols-7 py-5 my-2 border-top bg-dark">
+                    <div class="col"></div>
+                    <div class="col">
+                        <a href="/" class="d-flex align-items-center mb-1 link-dark text-decoration-none">
+                            <img src="{{ asset('img/logo2.png') }}" width="200" height="100">
                         </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="https://www.instagram.com/cucicepat.footwear/" class="nav-link p-0 text-muted">
-                            <i class='bx bxl-instagram bx-xs'></i> @cucicepat.footwear
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0 text-muted">
-                            <i class='bx bxs-map bx-xs'></i> Malang
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col"></div>
-        </footer>
-    </div>
-</body>
+                        <p class="text-muted text-center">SINCE 2023</p>
+                    </div>
 
-</html>
+                    <div class="col"></div>
+
+                    <div class="col">
+                        <h4 class="text-white">Ikuti Kami</h4>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="https://web.facebook.com/goblinoutdoor/"
+                                    class="nav-link p-0 text-muted">
+                                    <i class='bx bxl-facebook-circle bx-xs'></i> Facebook</a></li>
+                            <li class="nav-item mb-2"><a href="https://www.instagram.com/goblinoutdoor/"
+                                    class="nav-link p-0 text-muted">
+                                    <i class='bx bxl-instagram bx-xs'></i> Instagram</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">
+                                    <i class='bx bxl-twitter bx-xs'></i> Twitter</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col">
+                        <h4 class="text-white">Bantuan</h4>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Syarat &
+                                    Ketentuan</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Kebijakan
+                                    Privasi</a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Status</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link p-0 text-muted">
+                                    <i class='bx bxl-whatsapp bx-xs'></i> 0812-4982-541
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="https://www.instagram.com/cucicepat.footwear/" class="nav-link p-0 text-muted">
+                                    <i class='bx bxl-instagram bx-xs'></i> @cucicepat.footwear
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link p-0 text-muted">
+                                    <i class='bx bxs-map bx-xs'></i> Malang
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col"></div>
+                </footer>
+        </div>
+    </body>
+
+    </html>
+    @endif
+@endauth

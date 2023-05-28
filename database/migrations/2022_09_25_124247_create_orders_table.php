@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('no_hp');
             $table->text('address');
-            $table->enum('status',['Pending','Done'])->default('Pending');
+            $table->enum('status',['Belum Bayar','Proses','Selesai'])->default('Belum Bayar');
             $table->text('desc');
             $table->integer('weight');
             $table->foreignId('packet_id');

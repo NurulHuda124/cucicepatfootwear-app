@@ -56,17 +56,6 @@
                             </tr>
                         @endforelse
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Status pembayaran</th>
-                            <th>Tgl pengeluaran</th>
-                            <th>Harga</th>
-                            <th>Tempat pengeluaran</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->

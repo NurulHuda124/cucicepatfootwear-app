@@ -1,6 +1,6 @@
 @extends('dashboard.template')
 @section('content-dashboard')
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Form edit pesanan</h3>
         </div>
@@ -37,9 +37,9 @@
                         </select>
                     </div>
                     <div class="form-group col-sm-5">
-                        <label for="price">Berat</label>
+                        <label for="price">Jumlah</label>
                         <input type="number" name="weight" value="{{ $order->weight }}" class="form-control"
-                            id="price" placeholder="Masukkan berat barang" required>
+                            id="price" placeholder="Masukkan jumlah barang" required>
                     </div>
                 </div>
                 <div class="row">
@@ -59,14 +59,19 @@
                         <label for="">Status</label>
                         <div class="form-group d-flex">
                             <div class="form-check mr-3">
-                                <input class="form-check-input" type="radio" name="status" value="Done" id="Done"
-                                    {{ $order->status == 'Done' ? 'checked' : '' }}>
-                                <label for="Done" class="form-check-label">Done</label>
+                                <input class="form-check-input" type="radio" name="status" value="Selesai" id="Selesai"
+                                    {{ $order->status == 'Selesai' ? 'checked' : '' }}>
+                                <label for="Selesai" class="form-check-label">Selesai</label>
+                            </div>
+                            <div class="form-check mr-3">
+                                <input class="form-check-input" type="radio" name="status" value="Proses" id="Prosesi"
+                                    {{ $order->status == 'Proses' ? 'checked' : '' }}>
+                                <label for="Proses" class="form-check-label">Proses</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" value="Pending" id="Pending"
-                                    {{ $order->status == 'Pending' ? 'checked' : '' }}>
-                                <label for="Pending" class="form-check-label">Pending</label>
+                                <input class="form-check-input" type="radio" name="status" value="Belum Bayar"
+                                    id="Belum Bayar" {{ $order->status == 'Belum Bayar' ? 'checked' : '' }}>
+                                <label for="Belum Bayar" class="form-check-label">Belum Bayar</label>
                             </div>
                         </div>
                     </div>
@@ -74,7 +79,7 @@
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-warning">Simpan</button>
                 <a href="/dashboard/orders" class="btn btn-secondary ml-3">Batal</a>
             </div>
         </form>

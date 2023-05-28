@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Packet;
 use Illuminate\Http\Request;
 
-class LokasiController extends Controller
+class CheckController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,8 +24,12 @@ class LokasiController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Order $order)
     {
-        return view('lokasi');
+        return view('check',[
+            'title' => 'Order',
+            'users' => User::latest()->get(),
+            'orders' => Order::latest()->get()
+        ]);
     }
 }

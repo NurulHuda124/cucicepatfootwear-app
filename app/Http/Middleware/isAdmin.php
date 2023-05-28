@@ -13,12 +13,14 @@ class isAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (!auth()->check()||auth()->user()->role !== 'admin') {
-            abort(403);
-        } 
-        
-        return $next($request);
+        if (!Auth::check()) return redirect('login')->with('error', "You are not authorized to access.");
+
+        $user = Auth::user();
+        foreach ($roles as $role) {
+            if ($user->role === $role) return $next($request);
+        }
+        return redirect('login')->with('error', "You are not authorized to access.");
     }
 }

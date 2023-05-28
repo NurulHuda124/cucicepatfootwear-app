@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Bayar;
 use App\Models\Packet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,5 +14,8 @@ class Order extends Model
 
     public function packet(){
         return $this->belongsTo(Packet::class);
+    }
+    public function bayars(){
+        return $this->belongsTo(Bayar::class);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('packets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('gambar', 50);
             $table->string('code_packet');
             $table->string('unit');
             $table->integer('price');

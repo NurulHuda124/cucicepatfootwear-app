@@ -1,6 +1,6 @@
 @extends('dashboard.template')
 @section('content-dashboard')
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Form edit paket</h3>
         </div>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Ubah</button>
+                <button type="submit" class="btn btn-warning">Ubah</button>
                 <a href="/dashboard/packets" class="btn btn-secondary ml-3">Batal</a>
             </div>
         </form>

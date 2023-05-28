@@ -1,11 +1,11 @@
 @extends('dashboard.template')
 @section('content-dashboard')
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Form tambah paket baru</h3>
         </div>
 
-        <form action="/dashboard/packets" method="POST">
+        <form action="/dashboard/packets" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -32,15 +32,22 @@
                             placeholder="Masukkan harga per-satuan" required>
                     </div>
                 </div>
-                <div class="form-group col-sm-5">
-                    <label for="desc">Keterangan</label>
-                    <textarea name="desc" class="form-control" id="desc" cols="30" rows="10"
-                        placeholder="Masukkan keterangan mengenai paket" required></textarea>
+                <div class="row">
+                    <div class="form-group col-sm-5">
+                        <label for="gambar">Gambar</label>
+                        <input type="file" name="gambar">
+                    </div>
+                    <div class="form-group col-sm-5">
+                        <label for="desc">Keterangan</label>
+                        <textarea name="desc" class="form-control" id="desc" cols="30" rows="10"
+                            placeholder="Masukkan keterangan mengenai paket" required></textarea>
+                    </div>
                 </div>
+
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <button type="submit" class="btn btn-warning">Tambah</button>
                 <a href="/dashboard/packets" class="btn btn-secondary ml-3">Batal</a>
             </div>
         </form>

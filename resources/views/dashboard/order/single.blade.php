@@ -3,7 +3,7 @@
     <div>
         <a href="/dashboard/orders" class="btn btn-secondary mb-4"><i class="fa fa-solid fa-arrow-left mr-2"></i> Kembali</a>
 
-        <div class="card card-primary">
+        <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Data detail pesanan</h3>
             </div>
@@ -21,12 +21,12 @@
                         <tr>
                             <th>Status</th>
                             <td>
-                                <p class="btn btn-sm {{ $order->status == 'Pending' ? 'btn-primary' : 'btn-success' }}">
+                                <p class="btn btn-sm {{ $order->status == 'Belum Bayar' ? 'btn-danger' : 'btn-success' }}">
                                     {{ $order->status }}</p>
                             </td>
                         </tr>
                         <tr>
-                            <th>Berat</th>
+                            <th>Jumlah</th>
                             <td>{{ $order->weight }}</td>
                         </tr>
                         <tr>

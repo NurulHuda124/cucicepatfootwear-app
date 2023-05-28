@@ -12,6 +12,7 @@
                     <thead>
                         <tr>
                             <th>id</th>
+                            <th>Gambar</th>
                             <th>Nama</th>
                             <th>Satuan</th>
                             <th>Harga</th>
@@ -22,6 +23,8 @@
                         @forelse ($packets as $packet)
                             <tr>
                                 <th class="font-weight-normal">{{ $loop->iteration }}</th>
+                                <th class="font-weight-normal"><img src="{{ url('upload/') }}/{{ $packet->gambar }}"
+                                        class="img-fluid" width="200" height="420"></th>
                                 <th class="font-weight-normal">{{ $packet->name }}</th>
                                 <th class="font-weight-normal">{{ $packet->unit }}</th>
                                 <th class="font-weight-normal">Rp {{ number_format($packet->price) }} / {{ $packet->unit }}
@@ -40,7 +43,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <th class="font-weight-normal">Packet tersedia</th>
+                                <th class="font-weight-normal">Packet tidak tersedia</th>
                                 <th class="font-weight-normal"></th>
                                 <th class="font-weight-normal"></th>
                                 <th class="font-weight-normal"></th>
@@ -48,15 +51,6 @@
                             </tr>
                         @endforelse
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>id</th>
-                            <th>Nama</th>
-                            <th>Satuan</th>
-                            <th>Harga</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->

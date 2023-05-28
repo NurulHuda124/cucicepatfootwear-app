@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Asset;
 use App\Models\Order;
 use App\Models\Packet;
 use App\Models\Spending;
@@ -19,8 +18,7 @@ class DashboardController extends Controller
             'orderSevenD' => Order::where('created_at','>',Carbon::today()->subDays(7))->latest()->get(),
             'orders' => Order::all(),
             'userCount' => User::count(),
-            'sumSpending' => Spending::sum('total'),
-            'sumAsset' => Asset::sum('price')
+            'sumSpending' => Spending::sum('total')
         ]);
     }
 }

@@ -77,6 +77,8 @@
                                         <th class="font-weight-normal"></th>
                                         <th class="font-weight-normal"></th>
                                         <th class="font-weight-normal"></th>
+                                        <th class="font-weight-normal"></th>
+                                        <th class="font-weight-normal"></th>
                                         <th></th>
                                     </tr>
                                 @endforelse
